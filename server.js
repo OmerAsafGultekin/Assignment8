@@ -1,7 +1,9 @@
+import path from 'node:path';
 import express from 'express';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const publicDir = path.join(import.meta.dirname, 'public');
 
 // Hard-coded programme courses
 const COURSES = [
@@ -24,8 +26,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files
-app.use(express.static('public'));
+// Serve static files from resolved path
+app.use(express.static(publicDir));
 
 // Basic text and redirect routes
 app.get('/hello', (req, res) => {
