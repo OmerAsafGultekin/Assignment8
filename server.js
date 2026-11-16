@@ -19,7 +19,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/robots.txt', (req, res) => {
-  res.send('User-agent: *\nDisallow:');
+  res.type('text/plain').send('User-agent: *\nDisallow:');
 });
 
 app.get('/old-page', (req, res) => {
@@ -47,7 +47,7 @@ app.get('/api/headers', (req, res) => {
 });
 
 app.post('/api/subscribe', (req, res) => {
-  res.json({ subscribed: true });
+  res.status(201).json({ subscribed: true });
 });
 
 app.get('/api/admin', (req, res) => {
