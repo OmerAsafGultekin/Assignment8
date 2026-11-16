@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer & Network Systems Programme</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>BSc in Computer & Network Systems</h1>
+      <p>
+        This study programme focuses on modern server architecture, network protocols,
+        and system security. Students build hands-on backend services and learn how
+        distributed web applications communicate over HTTP.
+      </p>
+    </header>
+
+    <section class="controls">
+      <h2>Test API Endpoints</h2>
+      <div class="button-grid">
+        <button data-method="GET" data-url="/api/courses">GET /api/courses</button>
+        <button data-method="GET" data-url="/api/status">GET /api/status</button>
+        <button data-method="GET" data-url="/api/headers">GET /api/headers</button>
+        <button data-method="POST" data-url="/api/subscribe">POST /api/subscribe</button>
+        <button data-method="GET" data-url="/api/admin">GET /api/admin</button>
+        <button data-method="GET" data-url="/api/stats">GET /api/stats</button>
+        <button data-method="GET" data-url="/api/nonexistent">GET /api/nonexistent (404)</button>
+      </div>
+    </section>
+
+    <section class="output">
+      <h2>Response</h2>
+      <p class="status-line">Status: <strong id="status-code">-</strong></p>
+      <pre id="response-body">Click a button above to send a request.</pre>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
