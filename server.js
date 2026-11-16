@@ -72,6 +72,14 @@ app.get('/api/stats', (req, res) => {
   res.json({ requestsServed: requestCount });
 });
 
+// 404 fallback handler
+app.use((req, res) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+  res.status(404).send('Page not found');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
