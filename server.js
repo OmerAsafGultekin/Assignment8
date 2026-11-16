@@ -10,6 +10,20 @@ const COURSES = [
   { id: 'CS302', title: 'Web Server Architecture', credits: 5 }
 ];
 
+let requestCount = 0;
+
+// Log every incoming request
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
+// Count every incoming request
+app.use((req, res, next) => {
+  requestCount += 1;
+  next();
+});
+
 // Serve static files
 app.use(express.static('public'));
 
@@ -52,6 +66,10 @@ app.post('/api/subscribe', (req, res) => {
 
 app.get('/api/admin', (req, res) => {
   res.status(403).json({ error: 'Forbidden' });
+});
+
+app.get('/api/stats', (req, res) => {
+  res.json({ requestsServed: requestCount });
 });
 
 app.listen(PORT, () => {
